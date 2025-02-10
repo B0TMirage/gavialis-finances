@@ -10,6 +10,10 @@ import (
 
 func main() {
 	database.Connect()
+	if err := database.DB.Ping(); err != nil {
+		fmt.Println(err)
+	}
+	database.Migrate()
 	defer database.DB.Close()
 
 	mux := routes.Regrouter()

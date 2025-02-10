@@ -1,4 +1,4 @@
-package finance
+package models
 
 type Finance struct {
 	ID     int     `json:"id"`

@@ -1,0 +1,24 @@
+services:
+  gavialis-app:
+    image: gavialis
+    build: .
+    environment:
+      DATABASE_URL: "postgres://chef:pass@gavialis-db:5432/gavialis_db?sslmode=disable"
+    ports:
+      - "8000:8000"
+    depends_on:
+      - gavialis-db
+  gavialis-db:
+    image: postgres
+    container_name: gavialis-db
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: gavialis_db
+      POSTGRES_USER: chef
+      POSTGRES_PASSWORD: pass
+    ports:
+      - "5432:5432"
+
+volumes:
+  pg_data:

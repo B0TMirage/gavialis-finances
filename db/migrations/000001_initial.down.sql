@@ -1,0 +1,3 @@
+DROP TABLE IF EXISTS finance;
+DROP TABLE IF EXISTS users;
+DROP TYPE IF EXISTS mode_enum;

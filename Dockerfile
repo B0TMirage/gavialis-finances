@@ -1,10 +1,12 @@
-FROM golang:1.23.4-alpine
+FROM golang:1.23.4
 
 WORKDIR /app
 
-COPY . .
+COPY go.mod go.sum ./
 
 RUN go mod download
+
+COPY . .
 
 RUN cd cmd/gavialis && go build
 
